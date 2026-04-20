@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 [CustomEditor(typeof(SplineNode))]
 public class SplineNodeInspector : InstantInspector
@@ -180,13 +181,13 @@ public class SplineNodeInspector : InstantInspector
 			return;
 		
 		Handles.color = new Color( .3f, 1f, .20f, 1 );
-		Handles.ArrowCap( 0, targetNode.Position, Quaternion.LookRotation( targetNode.TransformedNormal ), HandleUtility.GetHandleSize( targetNode.Position ) * 0.5f );
+		Handles.ArrowHandleCap( 0, targetNode.Position, Quaternion.LookRotation( targetNode.TransformedNormal ), HandleUtility.GetHandleSize( targetNode.Position ) * 0.5f, EventType.Repaint );
 		
 				Handles.color = new Color( .2f, 0.4f, 1f, 1 );
-		Handles.ArrowCap( 0, targetNode.Position, Quaternion.LookRotation( targetNode.transform.forward ), HandleUtility.GetHandleSize( targetNode.Position ) * 0.5f );
+		Handles.ArrowHandleCap( 0, targetNode.Position, Quaternion.LookRotation( targetNode.transform.forward ), HandleUtility.GetHandleSize( targetNode.Position ) * 0.5f, EventType.Repaint );
 		
 		Handles.color = new Color( 1f, 0.5f, 0f, .75f );
-		Handles.SphereCap( 0, targetNode.Position, targetNode.Rotation, HandleUtility.GetHandleSize( targetNode.Position ) * 0.175f );
+		Handles.SphereHandleCap( 0, targetNode.Position, targetNode.Rotation, HandleUtility.GetHandleSize( targetNode.Position ) * 0.175f, EventType.Repaint );
 	}
 	
 	private GUIStyle GetButtonGUIStyleLeft( )

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using System.Diagnostics;
 
 public partial class SplineEditor : InstantInspector
 {
@@ -67,7 +68,7 @@ public partial class SplineEditor : InstantInspector
 			position = selectedNode.Position;
 			
 			Handles.color = new Color( .7f, 0.15f, 0.1f, toolSphereAlpha );
-			Handles.SphereCap( 0, position, Quaternion.identity, HandleUtility.GetHandleSize( position ) * 0.25f * toolSphereSize );
+			Handles.SphereHandleCap( 0, position, Quaternion.identity, HandleUtility.GetHandleSize( position ) * 0.25f * toolSphereSize, EventType.Repaint );
 			
 			Handles.color = Color.white;
 			Handles.Label( LabelPosition2D( position, 0.3f ), "Delete Node (" + selectedNode.gameObject.name + ")", sceneGUIStyleToolLabel ); 
@@ -77,7 +78,7 @@ public partial class SplineEditor : InstantInspector
 		else
 		{
 			Handles.color = new Color( .5f, 1f, .1f, toolSphereAlpha );
-			Handles.SphereCap( 0, position, Quaternion.identity, HandleUtility.GetHandleSize( position ) * 0.25f * toolSphereSize );
+			Handles.SphereHandleCap( 0, position, Quaternion.identity, HandleUtility.GetHandleSize( position ) * 0.25f * toolSphereSize, EventType.Repaint );
 			
 			Handles.color = Color.white;
 			Handles.Label( LabelPosition2D( position, 0.3f ), "Insert Node", sceneGUIStyleToolLabel ); 
@@ -123,9 +124,9 @@ public partial class SplineEditor : InstantInspector
 				Quaternion newRotation = Handles.RotationHandle( node.Rotation, node.Position );
 				
 				Handles.color = new Color( .2f, 0.4f, 1f, 1 );
-				Handles.ArrowCap( 0, node.Position, Quaternion.LookRotation( node.transform.forward ), HandleUtility.GetHandleSize( node.Position ) * 0.5f );
+				Handles.ArrowHandleCap( 0, node.Position, Quaternion.LookRotation( node.transform.forward ), HandleUtility.GetHandleSize( node.Position ) * 0.5f, EventType.Repaint );
 				Handles.color = new Color( .3f, 1f, .20f, 1 );
-				Handles.ArrowCap( 0, node.Position, Quaternion.LookRotation( node.transform.up ), HandleUtility.GetHandleSize( node.Position ) * 0.5f );
+				Handles.ArrowHandleCap( 0, node.Position, Quaternion.LookRotation( node.transform.up ), HandleUtility.GetHandleSize( node.Position ) * 0.5f, EventType.Repaint );
 				Handles.color = Color.white;
 				
 				if( !GUI.changed )
@@ -174,17 +175,17 @@ public partial class SplineEditor : InstantInspector
 					Vector3 normal = spline.GetNormalToSpline( splineParam );
 					
 					Handles.color = new Color( .3f, 1f, .20f, 0.75f );
-					Handles.ArrowCap( 0, position, Quaternion.LookRotation( normal ), HandleUtility.GetHandleSize( position ) * 0.5f );
+					Handles.ArrowHandleCap( 0, position, Quaternion.LookRotation( normal ), HandleUtility.GetHandleSize( position ) * 0.5f, EventType.Repaint );
 				}
 			}
 			
 			Vector3 tangentPosition0 = spline.GetPositionOnSpline( 0 );
 			
 			Handles.color = new Color( .2f, 0.4f, 1f, 1 );
-			Handles.ArrowCap( 0, tangentPosition0, Quaternion.LookRotation( spline.GetTangentToSpline( 0 ) ), HandleUtility.GetHandleSize( tangentPosition0 ) * 0.5f );
+			Handles.ArrowHandleCap( 0, tangentPosition0, Quaternion.LookRotation( spline.GetTangentToSpline( 0 ) ), HandleUtility.GetHandleSize( tangentPosition0 ) * 0.5f, EventType.Repaint );
 			
 			Vector3 tangentPosition1 = spline.GetPositionOnSpline( 1 );
-			Handles.ArrowCap( 0, tangentPosition1, Quaternion.LookRotation( spline.GetTangentToSpline( 1 ) ), HandleUtility.GetHandleSize( tangentPosition1 ) * 0.5f );
+			Handles.ArrowHandleCap( 0, tangentPosition1, Quaternion.LookRotation( spline.GetTangentToSpline( 1 ) ), HandleUtility.GetHandleSize( tangentPosition1 ) * 0.5f, EventType.Repaint );
 		}
 		else if( Event.current.alt && Event.current.shift )
 		{

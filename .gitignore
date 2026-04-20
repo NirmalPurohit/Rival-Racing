@@ -1,2 +1,86 @@
 *.vscode
 .DS_Store
+
+# Unity generated
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+
+# Unity cache & auto-generated
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+*.cs.meta
+MemoryCaptures/
+Recordings/
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!/[Aa]ssets/**/*.meta
+
+# Unity3D generated meta files
+*.pidb
+*.pdb
+*.mdb
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Crashlytics
+crashlytics-build.properties
+
+# Visual Studio / Rider IDE
+.vs/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Package Manager cache
+[Pp]ackages/
+![Pp]ackages/manifest.json
+![Pp]ackages/packages-lock.json
+
+# TextMeshPro (keep settings, ignore generated)
+[Aa]ssets/[Tt]ext[Mm]esh[Pp]ro/
+
+# Addressables
+[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*
+![Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+![Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.json
+![Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.xml
+![Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*[Ss]chema.asset
+
+# Profiling
+[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# JetBrains Rider
+.idea/
